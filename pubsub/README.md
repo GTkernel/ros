@@ -16,13 +16,31 @@ e.g.
 $ docker build -t ros:pubsub .
 ```
 
+This image can be used in all three components we required.
+
 ## How to run
 
 ### Through docker
 
+Making sure your containers can communicate bi-directionally between each other, no matter through container networking or host networking.
+And we should follow the ordering below:
 
+Run ROS Core: 
+```
+$ docker run -d ros:pubsub source /opt/ros/devel/setup.bash && roscore
+```
+
+Run subscriber:
+```
+$ docker run -it ros:pubsub -e ROS_MASTER_URI='$ROS_CORE_IP:11311' -e ROS_IP='$ROS_SUB_IP' source /opt/ros/devel/setup.bash && rosrun roscpp_tutorials listener
+```
+
+Run publisher:
+```
+$ docker run -it ros:pubsub -e ROS_MASTER_URI='$ROS_CORE_IP:11311' -e ROS_IP='$ROS_PUB_IP' source /opt/ros/devel/setup.bash && rosrun roscpp_tutorials listener
+```
 
 ### Through Kubernetes
 
-
+Just run the YAML files under `./k8s`.
 
