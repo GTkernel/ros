@@ -6,6 +6,19 @@ This program is referred to following materials
 - [Official tutorial instruction](http://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28c%2B%2B%29)
 - [Source code repo](https://github.com/ros/ros_tutorials)
 
+### To change the publishing frequency
+
+In this example, we only show the usage of the program `talker` and `listener`. 
+The frequency of "talking" is in the **line 89** of `roscpp_tutorials/talker/talker.cpp`:
+
+```
+:
+ros:Rate loop_rate(1000);
+:
+```
+
+`1000` means Hz, so the delay between each message is 1/1000 second, 1 millisecond.
+Anytime you change the program, you need to recompile/build the new docker image.
 
 ## How to build
 
