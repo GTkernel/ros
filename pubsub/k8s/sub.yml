@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: rossub
+spec:
+  selector:
+    func: ros-sub
+#headless
+  clusterIP: None
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rossub
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      func: ros-sub
+  template:
+    metadata:
+      labels:
+        func: ros-sub
+    spec:
+      hostname: rossub
+      containers:
+      - name: sub
+        image: ros:pubsub
+        imagePullPolicy: Never
+        command:
+        - /bin/bash
+        - -c
+        - 'source /opt/ros/devel/setup.bash && rosrun roscpp_tutorials listener'

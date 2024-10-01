@@ -55,5 +55,11 @@ $ docker run -it ros:pubsub -e ROS_MASTER_URI='$ROS_CORE_IP:11311' -e ROS_IP='$R
 
 ### Through Kubernetes
 
-Just run the YAML files under `./k8s`.
+Simply run the YAML files under `./k8s`.
+There are pairs of K8s configuration files for running the server-client model: `core_pub.yml` with `sub.yml`, 
+and `core_sub.yml` with `pub.yml`.
+These deployments indicate that either subscriber or publisher components running with core is supposed to 
+run on the server side.
+The difference lies in the message-passing direction: either from the server or to the server.
+
 
