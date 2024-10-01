@@ -11,6 +11,4 @@ Please refer to specific one for more instruction (Currently only pub-sub one).
 ## Support
 
 Welcome to update and discuss the usecases througth issue tickets and pull requests.
-Or, for any other question, please contact to [Carol Hsu](mailto:nosus_hsu@gatech.edu).
-
 
